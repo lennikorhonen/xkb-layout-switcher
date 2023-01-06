@@ -8,6 +8,7 @@ Didn't bother to look if tiling window managers already handle this problem so I
 * [Installing the program](#installing-the-program)
 * [Build from source](#build-from-source)
 * [Backlog](#backlog)
+* [How to use example](#how-to-use-example)
 
 ## Installing the program
 Download the binary from the releases page and save it to `/usr/bin` directory
@@ -40,6 +41,12 @@ go build
 ```
 
 and then move it to `/usr/bin`
+
+## How to use example
+For example in i3 config file add this line
+```
+bindsym $mod+space exec "keyboard-layout-switcher"
+```
 
 ## Backlog
 
