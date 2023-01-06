@@ -7,13 +7,7 @@ import (
 )
 
 func main() {
-    current, err := exec.Command("bash", "-c", "setxkbmap -print | awk '{ print $4 }' | grep -o -e us -e fi").Output()
-
-    if err != nil {
-        log.Println(err)
-    }
-    current_str := strings.Trim(string(current), "\n")
-
+    current_str := getCurrentLayout()
     var lang string
 
     if (current_str == "fi") {
@@ -25,7 +19,23 @@ func main() {
         lang = "us"
     }
 
-    _, err = exec.Command("setxkbmap", lang).Output()
+    changeCurrentLayout(lang)
+}
+
+func getCurrentLayout() string {
+    current, err := exec.Command("bash", "-c", "setxkbmap -print | awk '{ print $4 }' | grep -o -e us -e fi").Output()
+
+    if err != nil {
+        log.Println(err)
+    }
+
+    current_str := strings.Trim(string(current), "\n")
+
+    return current_str
+}
+
+func changeCurrentLayout(lang string) {
+    _, err := exec.Command("setxkbmap", lang).Output()
 
     if err != nil {
         log.Println(err)
