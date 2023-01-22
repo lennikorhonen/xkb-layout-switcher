@@ -23,7 +23,7 @@ func main() {
 }
 
 func getCurrentLayout() string {
-    current, err := exec.Command("bash", "-c", "setxkbmap -print | awk '{ print $4 }' | grep -o -e us -e fi").Output()
+    current, err := exec.Command("bash", "-c", `setxkbmap -query | grep -oP 'layout:\s*\K([\w,]+)'`).Output()
 
     if err != nil {
         log.Println(err)
