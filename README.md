@@ -7,8 +7,8 @@ Didn't bother to look if tiling window managers already handle this problem so I
 
 * [Installing the program](#installing-the-program)
 * [Build from source](#build-from-source)
-* [Backlog](#backlog)
 * [How to use example](#how-to-use-example)
+* [Backlog](#backlog)
 
 ## Installing the program
 Download the binary from the releases page and save it to `/usr/bin` directory
@@ -43,13 +43,21 @@ go build
 and then move it to `/usr/bin`
 
 ## How to use example
-For example in i3 config file add this line
+You can make a `settings.json` file and store it in `$XDG_CONFIG_HOME/kb_layout_switcher/settings.json`
+
+The contents of `settings.json` should look like this:
+```json
+{
+    "langs": ["fi", "us"]
+}
+```
+Then for example in i3 config file add this line
 ```
 bindsym $mod+space exec "keyboard-layout-switcher"
 ```
 
 ## Backlog
 
-- [ ] More than two languages
-- [ ] Support all languages
+- [x] More than two languages
+- [x] Support all languages
 - [ ] Some test cases
